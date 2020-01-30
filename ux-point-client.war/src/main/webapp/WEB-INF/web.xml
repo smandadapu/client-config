@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/web-application-context.xml</param-value>
+	</context-param>
+  <!--Uncomment this block when using HTTPS. This configuration prevents the transmission of a cookie over an unencrypted channel-->
+  <!--
+  <session-config>
+    <cookie-config>
+        <secure>true</secure>
+    </cookie-config>
+  </session-config>  
+  -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!--	SSO Config - Start-->
+		
+	<!-- SSO Config - End -->
+	
+	<!-- ForgeRock SSO Start-->
+	
+	<!--<context-param>
+		<param-name>forgerock.baseUrl</param-name>
+		<param-value>https://api.us.apiconnect.ibmcloud.com/csc-insurance-api-development/omnichannel-dev/pb360/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.clientId</param-name>
+		<param-value>dc1809ba-d09f-4d9f-ae9c-304a7ff6fc88</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.clientSecret</param-name>
+		<param-value>pK8eC3cQ4rD1pV0cC1dQ6uX3mQ5cP2qI1lQ6xG0fS1yP7sA2nN</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.logoutUrl</param-name>
+		<param-value>http://170.30.16.113:8180/ssofr-envjb-webpages/logout</param-value> 
+	</context-param>
+	<context-param>
+	<param-name>forgerock.connectTimeoutSec</param-name>
+	<param-value>0</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.connectionRequestTimeoutSec</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.socketTimeoutSec</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.useSingleClient</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.tokenCheckPeriodSec</param-name>
+		<param-value>60</param-value>
+	</context-param>
+	<context-param>
+		<param-name>forgerock.invalidateSessionOnClear</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<filter>
+		<filter-name>FRFilter</filter-name>
+		<filter-class>com.csc.ssosecurity.fr.filter.FRFilter</filter-class>
+	<init-param>
+		<param-name>filter.loginUrl</param-name>
+		<param-value>http://170.30.16.113:8180/ssofr-envjb-webpages/login</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.logoutUrl</param-name>
+		<param-value>http://170.30.16.113:8180/ssofr-envjb-webpages/logout</param-value> 
+	</init-param>
+	<init-param>
+	  <param-name>filter.loginPage</param-name>
+	  <param-value>index.jsp</param-value>
+	</init-param>
+	<init-param>
+		<param-name>filter.logoutSuffix</param-name>
+		<param-value>/logout</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.noFirstSession</param-name>
+		<param-value>false</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.forceHttps</param-name>
+		<param-value>false</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.httpsPort</param-name>
+		<param-value>8543</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.resourceExtList</param-name>
+		<param-value></param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.addUserHeader</param-name>
+		<param-value>false</param-value> 
+	</init-param>
+	<init-param>
+		<param-name>filter.userHeaderName</param-name>
+		<param-value>csc-fruser</param-value> 
+	</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>FRFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>-->
+	
+	<!-- ForgeRock SSO End-->
+
+	<filter>
+		<filter-name>XSS</filter-name>
+		<filter-class>com.csc.cscip.ux.common.security.util.CrossScriptingFilter</filter-class>
+
+	</filter>
+
+	<filter-mapping>
+		<filter-name>XSS</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
